@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Starck Industries</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="brand-star">☆</span>
+    <span class="brand-name">STARCK<small>INDUSTRIES</small></span>
+  </a>
+  <div class="header-main">
+    <nav aria-label="Main navigation">
+      <a href="index.html" class="">HOME</a>
+      <a href="vehicles.html" class="">VEHICLES⌄</a>
+      <a href="parts.html" class="">PARTS⌄</a>
+      <a href="services.html" class="">SERVICES</a>
+      <a href="projects.html" class="">PROJECTS</a>
+      <a href="about.html" class="">ABOUT US</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </nav>
+    <form class="search" role="search" action="#" method="get" data-site-search><input type="search" name="q" placeholder="Search" aria-label="Search the website" required><button type="submit" aria-label="Submit search">⌕</button></form>
+  </div>
+</header>
+<main>
+
+<h1>CONTACT US</h1>
+<p class="subtitle">Talk to us about vehicles, spare parts and product availability.</p>
+<section class="contact-layout">
+  <div>
+    <h2>GET IN TOUCH</h2>
+    <p>Have a question about a vehicle or part? Send an enquiry and our team can assist with availability, pricing and suitable options.</p>
+    <div class="contact-item"><span>●</span><div><h3>PHONE</h3><p><a href="tel:+26776321019">+267 76321019</a></p></div></div>
+    <div class="contact-item"><span>●</span><div><h3>EMAIL</h3><p><a href="mailto:www.starkindustriesptld@gmail.com">www.starkindustriesptld@gmail.com</a></p><p><a href="https://wa.me/26776321019" target="_blank" rel="noopener">Chat on WhatsApp</a></p></div></div>
+    <div class="contact-item"><span>●</span><div><h3>LOCATION</h3><p>Tlokweng Road, Gaborone</p></div></div>
+  </div>
+  <div>
+    <h2>SEND AN ENQUIRY</h2>
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <label>Your name<input type="text" id="senderName" name="name" autocomplete="name" required></label>
+        <label>Email address<input type="email" id="senderEmail" name="email" autocomplete="email" required></label>
+      </div>
+      <label>Phone number<input type="tel" id="senderPhone" name="phone" autocomplete="tel" placeholder="Optional"></label>
+      <label>Subject<input type="text" id="emailSubject" name="subject" required></label>
+      <label>Message<textarea id="emailMessage" name="message" rows="5" required></textarea></label>
+      <button type="submit">SEND MESSAGE</button>
+      <p id="formStatus" class="fine-print" role="status" aria-live="polite"></p>
+    </form>
+    <p class="fine-print">Submitting opens your email application with your enquiry filled in. Press Send in that application to deliver it. You can also contact us by phone or WhatsApp.</p>
+  </div>
+</section>
+
+</main>
+<script>
+  const contactForm = document.getElementById("contactForm");
+
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (!contactForm.reportValidity()) return;
+
+    const recipient = "www.starkindustriesptld@gmail.com";
+    const name = document.getElementById("senderName").value.trim();
+    const email = document.getElementById("senderEmail").value.trim();
+    const phone = document.getElementById("senderPhone").value.trim();
+    const subject = document.getElementById("emailSubject").value.trim();
+    const message = document.getElementById("emailMessage").value.trim();
+
+    const body = [
+      "Name: " + name,
+      "Email: " + email,
+      "Phone: " + (phone || "Not provided"),
+      "",
+      "Message:",
+      message
+    ].join("\n");
+
+    const mailto = "mailto:" + recipient +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+
+    document.getElementById("formStatus").textContent =
+      "Your email application is opening. Review the message and press Send to deliver your enquiry.";
+
+    window.location.href = mailto;
+  });
+</script>
+  <script src="search.js"></script>
+</body>
+</html>
